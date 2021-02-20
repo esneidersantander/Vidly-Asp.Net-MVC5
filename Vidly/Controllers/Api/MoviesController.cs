@@ -42,8 +42,7 @@ namespace Vidly.Controllers.Api
                 return BadRequest();
             }
             var movie = Mapper.Map<MovieDto, Movie>(movieDto);
-            DateTime fecha = Convert.ToDateTime(movieDto.ReleaseDate);
-            movie.ReleaseDate = fecha;
+            movie.DateAdded = DateTime.Now;
             _context.Movies.Add(movie);
             _context.SaveChanges();
             movieDto.Id = movie.Id;
